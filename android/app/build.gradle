@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.ssa.ctp"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "28.0.12916984"
     compileSdkVersion 35
 
     compileOptions {

@@ -6,7 +6,7 @@ part 'auth_info.freezed.dart';
 part 'auth_info.g.dart';
 
 @freezed
-class AuthInfo with _$AuthInfo {
+abstract class AuthInfo with _$AuthInfo {
   const factory AuthInfo({required String accessToken, required int expireInSeconds, required String refreshToken}) =
       _AuthInfo;
 
@@ -27,7 +27,7 @@ class AuthInfo with _$AuthInfo {
 
 @freezed
 @immutable
-class TokenResponseUser with _$TokenResponseUser {
+abstract class TokenResponseUser with _$TokenResponseUser {
   const factory TokenResponseUser({
     required String? sub,
     required String jti,

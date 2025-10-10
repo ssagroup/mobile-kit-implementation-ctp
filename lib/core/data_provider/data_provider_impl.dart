@@ -1,5 +1,6 @@
 import 'package:ctp_mobile/core/api/api_client.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/local/chart_local_datasource.dart';
+import 'package:ctp_mobile/feature/home/data/datasource/local/infrastructure_local_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/control_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/infrastructure_chart_remote_datasource.dart';
 import 'package:ctp_mobile/feature/home/data/datasource/remote/kpi_chart_remote_datasource.dart';
@@ -15,6 +16,7 @@ import 'package:ctp_mobile/feature/home/data/repository/settings_repository_impl
 import 'package:ctp_mobile/feature/login/data/datasource/auth_local_datasource.dart';
 import 'package:ctp_mobile/feature/login/data/datasource/auth_remote_datasource.dart';
 import 'package:ctp_mobile/feature/login/data/repository/auth_repository_impl.dart';
+import 'package:ctp_mobile/presentation/app_logo_provider_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:ctp_mobile/feature/biometrics_auth/data/datasource/local/hive_biometrics_local_datasource_impl.dart';
@@ -26,7 +28,7 @@ import 'package:mobile_kit/mobile_kit.dart';
 class DataProviderImpl extends DataProvider {
   final String stageBaseUrl = 'https://ctp-portal-staging.azurewebsites.net/api';
   final String prodBaseUrl = 'https://backend-ctp.ssa.group/api';
-  final isProd = false;
+  final isProd = true;
 
   DataProviderImpl._(Box<String> box) {
     final storage = HiveStorage(box);
@@ -88,6 +90,7 @@ class DataProviderImpl extends DataProvider {
       client: client,
     );
     final infraChartLocalDataSource = InfrastructureChartLocalDatasourceImpl();
+    final infraLocalDataSource = InfrastructureLocalDatasourceImpl();
     chartRepository = ChartRepositoryImpl(
         kpiChartRemoteDatasource: kpiChartRemoteDataSource,
         infrastructureChartLocalDatasource: infraChartLocalDataSource);
@@ -100,9 +103,12 @@ class DataProviderImpl extends DataProvider {
         remoteDatasource: infrastructureRemoteDataSource,
         chartRemoteDatasource: infraChartRemoteDataSource,
         chartLocalDatasource: infraChartLocalDataSource,
+      infrastructureLocalDatasource: infraLocalDataSource,
     );
 
     settingsRepository = SettingsRepositoryImpl(localDatasource: authLocalDataSource);
+
+    appLogoProvider = AppLogoProviderImpl();
   }
 
   static Future<DataProviderImpl> create() async {

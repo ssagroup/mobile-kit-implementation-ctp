@@ -4,7 +4,7 @@ part 'kpi_chart_info.freezed.dart';
 part 'kpi_chart_info.g.dart';
 
 @freezed
-class KpiChartInfo with _$KpiChartInfo {
+abstract class KpiChartInfo with _$KpiChartInfo {
   const factory KpiChartInfo({
     required double pnl,
     required double pnlInvestment,

@@ -2,6 +2,8 @@
 
 part of 'api_client.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -151,25 +153,30 @@ class _ApiClient implements ApiClient {
   @override
   Future<APIResultResponse<APIItemsResult<NotificationInfo>>> getNotifications({
     required String authorization,
+    required int skipCount,
+    required int maxResultCount,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'SkipCount': skipCount,
+      r'MaxResultCount': maxResultCount,
+    };
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<APIResultResponse<APIItemsResult<NotificationInfo>>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v1.0/notification',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(
-            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-          ),
-    );
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v1.0/notification',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late APIResultResponse<APIItemsResult<NotificationInfo>> _value;
     try {
@@ -223,7 +230,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<InfrastructureDetailsInfo> getInfrastructureDetails({
+  Future<InfrastructureDetailedInfo> getInfrastructureDetails({
     required String authorization,
     required int dashboardId,
   }) async {
@@ -232,7 +239,7 @@ class _ApiClient implements ApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<InfrastructureDetailsInfo>(
+    final _options = _setStreamType<InfrastructureDetailedInfo>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -243,9 +250,9 @@ class _ApiClient implements ApiClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late InfrastructureDetailsInfo _value;
+    late InfrastructureDetailedInfo _value;
     try {
-      _value = InfrastructureDetailsInfo.fromJson(_result.data!);
+      _value = InfrastructureDetailedInfo.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -268,15 +275,17 @@ class _ApiClient implements ApiClient {
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<APIDataResponse<APIResultsResponse<dynamic>>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/InfraDash/grafana/dashboards/${dashboardUid}/panel/${panelId}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+          Options(method: 'POST', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/InfraDash/grafana/dashboards/${dashboardUid}/panel/${panelId}',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late APIDataResponse<APIResultsResponse<dynamic>> _value;
     try {
@@ -286,6 +295,40 @@ class _ApiClient implements ApiClient {
           json as Map<String, dynamic>,
           (json) => json as dynamic,
         ),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<APIDataResponse<InfrastructureStatusInfo>> getInfraAlerts({
+    required String authorization,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<APIDataResponse<InfrastructureStatusInfo>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/InfraDash/alerts',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late APIDataResponse<InfrastructureStatusInfo> _value;
+    try {
+      _value = APIDataResponse<InfrastructureStatusInfo>.fromJson(
+        _result.data!,
+        (json) =>
+            InfrastructureStatusInfo.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -356,17 +399,17 @@ class _ApiClient implements ApiClient {
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<APIResultResponse<APIDataResult<KpiChartInfo>>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v1.0/statistics/dashboard/graphs',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(
-            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-          ),
-    );
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v1.0/statistics/dashboard/graphs',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late APIResultResponse<APIDataResult<KpiChartInfo>> _value;
     try {
@@ -406,17 +449,17 @@ class _ApiClient implements ApiClient {
     const Map<String, dynamic>? _data = null;
     final _options =
         _setStreamType<APIResultResponse<APIItemsResult<ControlInfo>>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/v1.0/bots',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(
-            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-          ),
-    );
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/v1.0/bots',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late APIResultResponse<APIItemsResult<ControlInfo>> _value;
     try {
@@ -557,3 +600,5 @@ class _ApiClient implements ApiClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

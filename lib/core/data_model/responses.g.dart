@@ -6,20 +6,14 @@ part of 'responses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EmptyResponseImpl _$$EmptyResponseImplFromJson(Map<String, dynamic> json) =>
-    _$EmptyResponseImpl();
+_EmptyResponse _$EmptyResponseFromJson(Map<String, dynamic> json) =>
+    _EmptyResponse();
 
-Map<String, dynamic> _$$EmptyResponseImplToJson(_$EmptyResponseImpl instance) =>
+Map<String, dynamic> _$EmptyResponseToJson(_EmptyResponse instance) =>
     <String, dynamic>{};
 
-_$SuccessResponseImpl _$$SuccessResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SuccessResponseImpl(
-      success: json['success'] as bool,
-    );
+_SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) =>
+    _SuccessResponse(success: json['success'] as bool);
 
-Map<String, dynamic> _$$SuccessResponseImplToJson(
-        _$SuccessResponseImpl instance) =>
-    <String, dynamic>{
-      'success': instance.success,
-    };
+Map<String, dynamic> _$SuccessResponseToJson(_SuccessResponse instance) =>
+    <String, dynamic>{'success': instance.success};

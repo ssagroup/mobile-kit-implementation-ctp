@@ -6,7 +6,7 @@ part 'notification_info.g.dart';
 enum NotificationType { Informational, Error, Warning }
 
 @freezed
-class NotificationInfo with _$NotificationInfo {
+abstract class NotificationInfo with _$NotificationInfo {
   const factory NotificationInfo({
     required String title,
     required String text,
