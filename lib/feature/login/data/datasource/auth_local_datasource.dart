@@ -4,6 +4,7 @@ const String _authAccessTokenKey = '___/token/access_token___';
 const String _authRefreshTokenKey = '___/token/refresh_token___';
 const String _authUserNameKey = '___/token/user_name___';
 const String _authUserEmailKey = '___/token/user_email___';
+const String _authUserRoleKey = '___/token/user_role___';
 
 class AuthLocalDataSourceImpl with HiveBaseLocalDataSourceMixin {
   AuthLocalDataSourceImpl({
@@ -16,16 +17,19 @@ class AuthLocalDataSourceImpl with HiveBaseLocalDataSourceMixin {
   Future<String> readRefreshToken() => read<String>(_storage, _authRefreshTokenKey, (s) => s);
   Future<String> readUserName() => read<String>(_storage, _authUserNameKey, (s) => s);
   Future<String> readUserEmail() => read<String>(_storage, _authUserEmailKey, (s) => s);
+  Future<String> readUserRole() => read<String>(_storage, _authUserRoleKey, (s) => s);
 
   Future<void> writeAccessToken(String token) => write<String>(_storage, _authAccessTokenKey, token, (s) => s);
   Future<void> writeRefreshToken(String token) => write<String>(_storage, _authRefreshTokenKey, token, (s) => s);
   Future<void> writeUserName(String userName) => write<String>(_storage, _authUserNameKey, userName, (s) => s);
   Future<void> writeUserEmail(String userEmail) => write<String>(_storage, _authUserEmailKey, userEmail, (s) => s);
+  Future<void> writeUserRole(String? userRole) => write<String?>(_storage, _authUserRoleKey, userRole, (s) => s.orEmpty);
 
   Future<void> clear() async {
     await delete(_storage, _authAccessTokenKey);
     await delete(_storage, _authRefreshTokenKey);
     await delete(_storage, _authUserNameKey);
     await delete(_storage, _authUserEmailKey);
+    await delete(_storage, _authUserRoleKey);
   }
 }

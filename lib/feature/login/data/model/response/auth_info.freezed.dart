@@ -284,7 +284,7 @@ as String,
 /// @nodoc
 mixin _$TokenResponseUser {
 
- String? get sub; String get jti;@JsonKey(name: 'given_name') String get givenName; int? get exp;
+ String? get sub; String get jti;@JsonKey(name: 'given_name') String get givenName; int? get exp; String? get role;
 /// Create a copy of TokenResponseUser
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -297,16 +297,16 @@ $TokenResponseUserCopyWith<TokenResponseUser> get copyWith => _$TokenResponseUse
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenResponseUser&&(identical(other.sub, sub) || other.sub == sub)&&(identical(other.jti, jti) || other.jti == jti)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.exp, exp) || other.exp == exp));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenResponseUser&&(identical(other.sub, sub) || other.sub == sub)&&(identical(other.jti, jti) || other.jti == jti)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.exp, exp) || other.exp == exp)&&(identical(other.role, role) || other.role == role));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sub,jti,givenName,exp);
+int get hashCode => Object.hash(runtimeType,sub,jti,givenName,exp,role);
 
 @override
 String toString() {
-  return 'TokenResponseUser(sub: $sub, jti: $jti, givenName: $givenName, exp: $exp)';
+  return 'TokenResponseUser(sub: $sub, jti: $jti, givenName: $givenName, exp: $exp, role: $role)';
 }
 
 
@@ -317,7 +317,7 @@ abstract mixin class $TokenResponseUserCopyWith<$Res>  {
   factory $TokenResponseUserCopyWith(TokenResponseUser value, $Res Function(TokenResponseUser) _then) = _$TokenResponseUserCopyWithImpl;
 @useResult
 $Res call({
- String? sub, String jti,@JsonKey(name: 'given_name') String givenName, int? exp
+ String? sub, String jti,@JsonKey(name: 'given_name') String givenName, int? exp, String? role
 });
 
 
@@ -334,13 +334,14 @@ class _$TokenResponseUserCopyWithImpl<$Res>
 
 /// Create a copy of TokenResponseUser
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? sub = freezed,Object? jti = null,Object? givenName = null,Object? exp = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? sub = freezed,Object? jti = null,Object? givenName = null,Object? exp = freezed,Object? role = freezed,}) {
   return _then(_self.copyWith(
 sub: freezed == sub ? _self.sub : sub // ignore: cast_nullable_to_non_nullable
 as String?,jti: null == jti ? _self.jti : jti // ignore: cast_nullable_to_non_nullable
 as String,givenName: null == givenName ? _self.givenName : givenName // ignore: cast_nullable_to_non_nullable
 as String,exp: freezed == exp ? _self.exp : exp // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -425,10 +426,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp,  String? role)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TokenResponseUser() when $default != null:
-return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
+return $default(_that.sub,_that.jti,_that.givenName,_that.exp,_that.role);case _:
   return orElse();
 
 }
@@ -446,10 +447,10 @@ return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp,  String? role)  $default,) {final _that = this;
 switch (_that) {
 case _TokenResponseUser():
-return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
+return $default(_that.sub,_that.jti,_that.givenName,_that.exp,_that.role);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -466,10 +467,10 @@ return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? sub,  String jti, @JsonKey(name: 'given_name')  String givenName,  int? exp,  String? role)?  $default,) {final _that = this;
 switch (_that) {
 case _TokenResponseUser() when $default != null:
-return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
+return $default(_that.sub,_that.jti,_that.givenName,_that.exp,_that.role);case _:
   return null;
 
 }
@@ -481,13 +482,14 @@ return $default(_that.sub,_that.jti,_that.givenName,_that.exp);case _:
 @JsonSerializable()
 
 class _TokenResponseUser extends TokenResponseUser {
-  const _TokenResponseUser({required this.sub, required this.jti, @JsonKey(name: 'given_name') required this.givenName, required this.exp}): super._();
+  const _TokenResponseUser({required this.sub, required this.jti, @JsonKey(name: 'given_name') required this.givenName, required this.exp, required this.role}): super._();
   factory _TokenResponseUser.fromJson(Map<String, dynamic> json) => _$TokenResponseUserFromJson(json);
 
 @override final  String? sub;
 @override final  String jti;
 @override@JsonKey(name: 'given_name') final  String givenName;
 @override final  int? exp;
+@override final  String? role;
 
 /// Create a copy of TokenResponseUser
 /// with the given fields replaced by the non-null parameter values.
@@ -502,16 +504,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TokenResponseUser&&(identical(other.sub, sub) || other.sub == sub)&&(identical(other.jti, jti) || other.jti == jti)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.exp, exp) || other.exp == exp));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TokenResponseUser&&(identical(other.sub, sub) || other.sub == sub)&&(identical(other.jti, jti) || other.jti == jti)&&(identical(other.givenName, givenName) || other.givenName == givenName)&&(identical(other.exp, exp) || other.exp == exp)&&(identical(other.role, role) || other.role == role));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sub,jti,givenName,exp);
+int get hashCode => Object.hash(runtimeType,sub,jti,givenName,exp,role);
 
 @override
 String toString() {
-  return 'TokenResponseUser(sub: $sub, jti: $jti, givenName: $givenName, exp: $exp)';
+  return 'TokenResponseUser(sub: $sub, jti: $jti, givenName: $givenName, exp: $exp, role: $role)';
 }
 
 
@@ -522,7 +524,7 @@ abstract mixin class _$TokenResponseUserCopyWith<$Res> implements $TokenResponse
   factory _$TokenResponseUserCopyWith(_TokenResponseUser value, $Res Function(_TokenResponseUser) _then) = __$TokenResponseUserCopyWithImpl;
 @override @useResult
 $Res call({
- String? sub, String jti,@JsonKey(name: 'given_name') String givenName, int? exp
+ String? sub, String jti,@JsonKey(name: 'given_name') String givenName, int? exp, String? role
 });
 
 
@@ -539,13 +541,14 @@ class __$TokenResponseUserCopyWithImpl<$Res>
 
 /// Create a copy of TokenResponseUser
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? sub = freezed,Object? jti = null,Object? givenName = null,Object? exp = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? sub = freezed,Object? jti = null,Object? givenName = null,Object? exp = freezed,Object? role = freezed,}) {
   return _then(_TokenResponseUser(
 sub: freezed == sub ? _self.sub : sub // ignore: cast_nullable_to_non_nullable
 as String?,jti: null == jti ? _self.jti : jti // ignore: cast_nullable_to_non_nullable
 as String,givenName: null == givenName ? _self.givenName : givenName // ignore: cast_nullable_to_non_nullable
 as String,exp: freezed == exp ? _self.exp : exp // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

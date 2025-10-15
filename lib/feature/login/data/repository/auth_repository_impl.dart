@@ -64,6 +64,7 @@ class AuthenticationRepositoryImpl with BaseRepositoryMixin implements Authentic
       final TokenResponseUser userFromJWT = result.user;
       await _localDataSource.writeUserName(userFromJWT.givenName);
       await _localDataSource.writeUserEmail(request.email);
+      await _localDataSource.writeUserRole(userFromJWT.role);
       final user = userFromJWT.toUserModel(
         email: request.email,
         token: result.accessToken,

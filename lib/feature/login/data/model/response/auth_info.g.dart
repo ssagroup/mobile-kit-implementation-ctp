@@ -24,6 +24,7 @@ _TokenResponseUser _$TokenResponseUserFromJson(Map<String, dynamic> json) =>
       jti: json['jti'] as String,
       givenName: json['given_name'] as String,
       exp: (json['exp'] as num?)?.toInt(),
+      role: json['role'] as String?,
     );
 
 Map<String, dynamic> _$TokenResponseUserToJson(_TokenResponseUser instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$TokenResponseUserToJson(_TokenResponseUser instance) =>
       'jti': instance.jti,
       'given_name': instance.givenName,
       'exp': instance.exp,
+      'role': instance.role,
     };

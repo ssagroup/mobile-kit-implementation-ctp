@@ -17,11 +17,22 @@ abstract class AuthInfo with _$AuthInfo {
   TokenResponseUser get user {
     try {
       final Map<String, dynamic> json = JwtDecoder.decode(accessToken);
-      final responseUser = TokenResponseUser.fromJson(json);
+      final userRole = _extractRole(json);
+      var responseUser = TokenResponseUser.fromJson(json);
+      responseUser = responseUser.copyWith(role: userRole);
       return responseUser;
     } on Object catch (_) {
       throw ServerException(0, 'Invalid token user. JWT Token decode error');
     }
+  }
+
+  String? _extractRole(Map<String, dynamic> payload) {
+    for (var entry in payload.entries) {
+      if (entry.key.toLowerCase().contains('role')) {
+        return entry.value?.toString();
+      }
+    }
+    return null;
   }
 }
 
@@ -33,6 +44,7 @@ abstract class TokenResponseUser with _$TokenResponseUser {
     required String jti,
     @JsonKey(name: 'given_name') required String givenName,
     required int? exp,
+    required String? role,
   }) = _TokenResponseUser;
 
   factory TokenResponseUser.fromJson(Map<String, dynamic> json) => _$TokenResponseUserFromJson(json);
@@ -50,6 +62,18 @@ abstract class TokenResponseUser with _$TokenResponseUser {
       userName: givenName,
       authToken: token,
       refreshToken: refreshToken,
+      userRole: UserRole.fromString(role),
     );
   }
 }
+
+// enum UserRole {
+//   trader,
+//   admin,
+//   unknown;
+//
+//
+//
+//   /// Получение строки обратно (если нужно сохранить в БД, например)
+//   String get name => toString().split('.').last;
+// }
