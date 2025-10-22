@@ -1,7 +1,7 @@
 name: ctp_mobile
 description: "CTP 2.0 project powered by SSA Group."
 publish_to: 'none'
-version: 2.0.0+27
+version: 2.0.0+30
 
 environment:
   sdk: ^3.8.0
