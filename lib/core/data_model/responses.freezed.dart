@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,246 +9,467 @@ part of 'responses.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-EmptyResponse _$EmptyResponseFromJson(Map<String, dynamic> json) {
-  return _EmptyResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$EmptyResponse {
+
+
+
   /// Serializes this EmptyResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmptyResponse);
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'EmptyResponse()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EmptyResponseCopyWith<$Res> {
-  factory $EmptyResponseCopyWith(
-          EmptyResponse value, $Res Function(EmptyResponse) then) =
-      _$EmptyResponseCopyWithImpl<$Res, EmptyResponse>;
+class $EmptyResponseCopyWith<$Res>  {
+$EmptyResponseCopyWith(EmptyResponse _, $Res Function(EmptyResponse) __);
 }
 
-/// @nodoc
-class _$EmptyResponseCopyWithImpl<$Res, $Val extends EmptyResponse>
-    implements $EmptyResponseCopyWith<$Res> {
-  _$EmptyResponseCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [EmptyResponse].
+extension EmptyResponsePatterns on EmptyResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of EmptyResponse
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _EmptyResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _EmptyResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _EmptyResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _EmptyResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _EmptyResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _EmptyResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function()?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _EmptyResponse() when $default != null:
+return $default();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function()  $default,) {final _that = this;
+switch (_that) {
+case _EmptyResponse():
+return $default();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function()?  $default,) {final _that = this;
+switch (_that) {
+case _EmptyResponse() when $default != null:
+return $default();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$EmptyResponseImplCopyWith<$Res> {
-  factory _$$EmptyResponseImplCopyWith(
-          _$EmptyResponseImpl value, $Res Function(_$EmptyResponseImpl) then) =
-      __$$EmptyResponseImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$EmptyResponseImplCopyWithImpl<$Res>
-    extends _$EmptyResponseCopyWithImpl<$Res, _$EmptyResponseImpl>
-    implements _$$EmptyResponseImplCopyWith<$Res> {
-  __$$EmptyResponseImplCopyWithImpl(
-      _$EmptyResponseImpl _value, $Res Function(_$EmptyResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of EmptyResponse
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$EmptyResponseImpl implements _EmptyResponse {
-  const _$EmptyResponseImpl();
 
-  factory _$EmptyResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EmptyResponseImplFromJson(json);
+class _EmptyResponse implements EmptyResponse {
+  const _EmptyResponse();
+  factory _EmptyResponse.fromJson(Map<String, dynamic> json) => _$EmptyResponseFromJson(json);
 
-  @override
-  String toString() {
-    return 'EmptyResponse()';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyResponseImpl);
-  }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EmptyResponseImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$EmptyResponseToJson(this, );
 }
 
-abstract class _EmptyResponse implements EmptyResponse {
-  const factory _EmptyResponse() = _$EmptyResponseImpl;
-
-  factory _EmptyResponse.fromJson(Map<String, dynamic> json) =
-      _$EmptyResponseImpl.fromJson;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmptyResponse);
 }
 
-SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) {
-  return _SuccessResponse.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'EmptyResponse()';
 }
+
+
+}
+
+
+
+
 
 /// @nodoc
 mixin _$SuccessResponse {
-  bool get success => throw _privateConstructorUsedError;
+
+ bool get success;
+/// Create a copy of SuccessResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessResponseCopyWith<SuccessResponse> get copyWith => _$SuccessResponseCopyWithImpl<SuccessResponse>(this as SuccessResponse, _$identity);
 
   /// Serializes this SuccessResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SuccessResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SuccessResponseCopyWith<SuccessResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessResponse&&(identical(other.success, success) || other.success == success));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,success);
+
+@override
+String toString() {
+  return 'SuccessResponse(success: $success)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SuccessResponseCopyWith<$Res> {
-  factory $SuccessResponseCopyWith(
-          SuccessResponse value, $Res Function(SuccessResponse) then) =
-      _$SuccessResponseCopyWithImpl<$Res, SuccessResponse>;
-  @useResult
-  $Res call({bool success});
-}
+abstract mixin class $SuccessResponseCopyWith<$Res>  {
+  factory $SuccessResponseCopyWith(SuccessResponse value, $Res Function(SuccessResponse) _then) = _$SuccessResponseCopyWithImpl;
+@useResult
+$Res call({
+ bool success
+});
 
+
+
+
+}
 /// @nodoc
-class _$SuccessResponseCopyWithImpl<$Res, $Val extends SuccessResponse>
+class _$SuccessResponseCopyWithImpl<$Res>
     implements $SuccessResponseCopyWith<$Res> {
-  _$SuccessResponseCopyWithImpl(this._value, this._then);
+  _$SuccessResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SuccessResponse _self;
+  final $Res Function(SuccessResponse) _then;
 
-  /// Create a copy of SuccessResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? success = null,
-  }) {
-    return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of SuccessResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? success = null,}) {
+  return _then(_self.copyWith(
+success: null == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SuccessResponseImplCopyWith<$Res>
-    implements $SuccessResponseCopyWith<$Res> {
-  factory _$$SuccessResponseImplCopyWith(_$SuccessResponseImpl value,
-          $Res Function(_$SuccessResponseImpl) then) =
-      __$$SuccessResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool success});
 }
 
-/// @nodoc
-class __$$SuccessResponseImplCopyWithImpl<$Res>
-    extends _$SuccessResponseCopyWithImpl<$Res, _$SuccessResponseImpl>
-    implements _$$SuccessResponseImplCopyWith<$Res> {
-  __$$SuccessResponseImplCopyWithImpl(
-      _$SuccessResponseImpl _value, $Res Function(_$SuccessResponseImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SuccessResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? success = null,
-  }) {
-    return _then(_$SuccessResponseImpl(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+/// Adds pattern-matching-related methods to [SuccessResponse].
+extension SuccessResponsePatterns on SuccessResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SuccessResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SuccessResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SuccessResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _SuccessResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SuccessResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SuccessResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool success)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SuccessResponse() when $default != null:
+return $default(_that.success);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool success)  $default,) {final _that = this;
+switch (_that) {
+case _SuccessResponse():
+return $default(_that.success);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool success)?  $default,) {final _that = this;
+switch (_that) {
+case _SuccessResponse() when $default != null:
+return $default(_that.success);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SuccessResponseImpl implements _SuccessResponse {
-  const _$SuccessResponseImpl({required this.success});
 
-  factory _$SuccessResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SuccessResponseImplFromJson(json);
+class _SuccessResponse implements SuccessResponse {
+  const _SuccessResponse({required this.success});
+  factory _SuccessResponse.fromJson(Map<String, dynamic> json) => _$SuccessResponseFromJson(json);
 
-  @override
-  final bool success;
+@override final  bool success;
 
-  @override
-  String toString() {
-    return 'SuccessResponse(success: $success)';
-  }
+/// Create a copy of SuccessResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SuccessResponseCopyWith<_SuccessResponse> get copyWith => __$SuccessResponseCopyWithImpl<_SuccessResponse>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessResponseImpl &&
-            (identical(other.success, success) || other.success == success));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, success);
-
-  /// Create a copy of SuccessResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessResponseImplCopyWith<_$SuccessResponseImpl> get copyWith =>
-      __$$SuccessResponseImplCopyWithImpl<_$SuccessResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SuccessResponseImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SuccessResponseToJson(this, );
 }
 
-abstract class _SuccessResponse implements SuccessResponse {
-  const factory _SuccessResponse({required final bool success}) =
-      _$SuccessResponseImpl;
-
-  factory _SuccessResponse.fromJson(Map<String, dynamic> json) =
-      _$SuccessResponseImpl.fromJson;
-
-  @override
-  bool get success;
-
-  /// Create a copy of SuccessResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessResponseImplCopyWith<_$SuccessResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SuccessResponse&&(identical(other.success, success) || other.success == success));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,success);
+
+@override
+String toString() {
+  return 'SuccessResponse(success: $success)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SuccessResponseCopyWith<$Res> implements $SuccessResponseCopyWith<$Res> {
+  factory _$SuccessResponseCopyWith(_SuccessResponse value, $Res Function(_SuccessResponse) _then) = __$SuccessResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ bool success
+});
+
+
+
+
+}
+/// @nodoc
+class __$SuccessResponseCopyWithImpl<$Res>
+    implements _$SuccessResponseCopyWith<$Res> {
+  __$SuccessResponseCopyWithImpl(this._self, this._then);
+
+  final _SuccessResponse _self;
+  final $Res Function(_SuccessResponse) _then;
+
+/// Create a copy of SuccessResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? success = null,}) {
+  return _then(_SuccessResponse(
+success: null == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

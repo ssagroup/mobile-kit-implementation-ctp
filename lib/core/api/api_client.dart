@@ -2,6 +2,7 @@ import 'package:ctp_mobile/core/data_model/api_response.dart';
 import 'package:ctp_mobile/core/data_model/responses.dart';
 import 'package:ctp_mobile/feature/home/data/model/infrastructure_details_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/infrastructure_info.dart';
+import 'package:ctp_mobile/feature/home/data/model/infrastructure_status_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/kpi_chart_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/control_info.dart';
 import 'package:ctp_mobile/feature/home/data/model/kpi_info.dart';
@@ -47,6 +48,8 @@ abstract class ApiClient {
   @GET('/v1.0/notification')
   Future<APIResultResponse<APIItemsResult<NotificationInfo>>> getNotifications({
     @Header('Authorization') required String authorization,
+    @Query('SkipCount') required int skipCount,
+    @Query('MaxResultCount') required int maxResultCount,
   });
 
 // ---------------------------------- INFRADASH -----------------------------------
@@ -56,7 +59,7 @@ abstract class ApiClient {
   });
 
   @GET('/InfraDash/dashboards/{dashboardId}')
-  Future<InfrastructureDetailsInfo> getInfrastructureDetails({
+  Future<InfrastructureDetailedInfo> getInfrastructureDetails({
     @Header('Authorization') required String authorization,
     @Path() required int dashboardId,
   });
@@ -67,6 +70,11 @@ abstract class ApiClient {
     @Path() required String dashboardUid,
     @Path() required int panelId,
     @Query('period') int? period,
+  });
+
+  @GET('/InfraDash/alerts')
+  Future<APIDataResponse<InfrastructureStatusInfo>> getInfraAlerts({
+    @Header('Authorization') required String authorization,
   });
 
 // ---------------------------------- KPI -----------------------------------

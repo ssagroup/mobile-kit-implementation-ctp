@@ -1,34 +1,37 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'infrastructure_status_info.dart';
+
 part 'infrastructure_details_info.freezed.dart';
 part 'infrastructure_details_info.g.dart';
 
 @freezed
-class InfrastructureDetailsInfo with _$InfrastructureDetailsInfo {
-  const factory InfrastructureDetailsInfo({
-    required String? status,
+abstract class InfrastructureDetailedInfo with _$InfrastructureDetailedInfo {
+  const factory InfrastructureDetailedInfo({
+    InfraState? status,
     required String title,
     required int id,
     required List<PanelInfo> panels,
-  }) = _InfrastructureDetailsInfo;
+  }) = _InfrastructureDetailedInfo;
 
-  factory InfrastructureDetailsInfo.fromJson(Map<String, dynamic> json) => _$InfrastructureDetailsInfoFromJson(json);
+  factory InfrastructureDetailedInfo.fromJson(Map<String, dynamic> json) => _$InfrastructureDetailedInfoFromJson(json);
 }
 
 @freezed
-class PanelInfo with _$PanelInfo {
+abstract class PanelInfo with _$PanelInfo {
   const factory PanelInfo({
     required String title,
     required int id,
     required SourceInfo source,
     required PanelSchema? panelSchema,
+    InfraState? status,
   }) = _PanelInfo;
 
   factory PanelInfo.fromJson(Map<String, dynamic> json) => _$PanelInfoFromJson(json);
 }
 
 @freezed
-class SourceInfo with _$SourceInfo {
+abstract class SourceInfo with _$SourceInfo {
   const factory SourceInfo({
     required String type,
     required String dashboardUid,
@@ -39,7 +42,7 @@ class SourceInfo with _$SourceInfo {
 }
 
 @freezed
-class PanelSchema with _$PanelSchema {
+abstract class PanelSchema with _$PanelSchema {
   const factory PanelSchema({
     required String type,
     required FieldConfig fieldConfig,
@@ -49,7 +52,7 @@ class PanelSchema with _$PanelSchema {
 }
 
 @freezed
-class FieldConfig with _$FieldConfig {
+abstract class FieldConfig with _$FieldConfig {
   const factory FieldConfig({
     required Defaults defaults,
   }) = _FieldConfig;
@@ -58,7 +61,7 @@ class FieldConfig with _$FieldConfig {
 }
 
 @freezed
-class Defaults with _$Defaults {
+abstract class Defaults with _$Defaults {
   const factory Defaults({
     String? unit,
     Custom? custom,
@@ -68,7 +71,7 @@ class Defaults with _$Defaults {
 }
 
 @freezed
-class Custom with _$Custom {
+abstract class Custom with _$Custom {
   const factory Custom({
     String? axisLabel,
   }) = _Custom;

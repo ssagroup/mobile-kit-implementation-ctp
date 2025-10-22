@@ -20,15 +20,15 @@ class NotificationRemoteDatasourceImpl with BaseRemoteDataSourceMixin {
 
   Stream<bool> get isFetching => _isFetchingSubject.stream;
 
-  Future<List<NotificationInfo>> getNotifications() async {
+  Future<APIItemsResult<NotificationInfo>> getNotifications({required int skipCount, required int limit}) async {
     _isFetchingSubject.add(true);
     try {
       final response = await requestWithAuthentication<APIResultResponse<APIItemsResult<NotificationInfo>>>(
         authenticationRep: _authentication,
-        method: (String auth) => _client.getNotifications(authorization: auth),
+        method: (String auth) => _client.getNotifications(authorization: auth, skipCount: skipCount, maxResultCount: limit),
       );
       _isFetchingSubject.add(false);
-      return response.result.items;
+      return response.result;
     } catch (_) {
       _isFetchingSubject.add(false);
       rethrow;

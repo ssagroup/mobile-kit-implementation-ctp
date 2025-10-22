@@ -6,82 +6,60 @@ part of 'api_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$APIDataResponseImpl<T> _$$APIDataResponseImplFromJson<T>(
+_APIDataResponse<T> _$APIDataResponseFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) =>
-    _$APIDataResponseImpl<T>(
-      data: fromJsonT(json['data']),
-    );
+) => _APIDataResponse<T>(data: fromJsonT(json['data']));
 
-Map<String, dynamic> _$$APIDataResponseImplToJson<T>(
-  _$APIDataResponseImpl<T> instance,
+Map<String, dynamic> _$APIDataResponseToJson<T>(
+  _APIDataResponse<T> instance,
   Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'data': toJsonT(instance.data),
-    };
+) => <String, dynamic>{'data': toJsonT(instance.data)};
 
-_$APIResultsResponseImpl<T> _$$APIResultsResponseImplFromJson<T>(
+_APIResultsResponse<T> _$APIResultsResponseFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) =>
-    _$APIResultsResponseImpl<T>(
-      results: fromJsonT(json['results']),
-    );
+) => _APIResultsResponse<T>(results: fromJsonT(json['results']));
 
-Map<String, dynamic> _$$APIResultsResponseImplToJson<T>(
-  _$APIResultsResponseImpl<T> instance,
+Map<String, dynamic> _$APIResultsResponseToJson<T>(
+  _APIResultsResponse<T> instance,
   Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'results': toJsonT(instance.results),
-    };
+) => <String, dynamic>{'results': toJsonT(instance.results)};
 
-_$APIResultResponseImpl<T> _$$APIResultResponseImplFromJson<T>(
+_APIResultResponse<T> _$APIResultResponseFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) =>
-    _$APIResultResponseImpl<T>(
-      result: fromJsonT(json['result']),
-    );
+) => _APIResultResponse<T>(result: fromJsonT(json['result']));
 
-Map<String, dynamic> _$$APIResultResponseImplToJson<T>(
-  _$APIResultResponseImpl<T> instance,
+Map<String, dynamic> _$APIResultResponseToJson<T>(
+  _APIResultResponse<T> instance,
   Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'result': toJsonT(instance.result),
-    };
+) => <String, dynamic>{'result': toJsonT(instance.result)};
 
-_$APIItemsResultImpl<T> _$$APIItemsResultImplFromJson<T>(
+_APIItemsResult<T> _$APIItemsResultFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) =>
-    _$APIItemsResultImpl<T>(
-      items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
-    );
+) => _APIItemsResult<T>(
+  items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
+  totalCount: (json['totalCount'] as num).toInt(),
+);
 
-Map<String, dynamic> _$$APIItemsResultImplToJson<T>(
-  _$APIItemsResultImpl<T> instance,
+Map<String, dynamic> _$APIItemsResultToJson<T>(
+  _APIItemsResult<T> instance,
   Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'items': instance.items.map(toJsonT).toList(),
-    };
+) => <String, dynamic>{
+  'items': instance.items.map(toJsonT).toList(),
+  'totalCount': instance.totalCount,
+};
 
-_$APIDataResultImpl<T> _$$APIDataResultImplFromJson<T>(
+_APIDataResult<T> _$APIDataResultFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) =>
-    _$APIDataResultImpl<T>(
-      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
-    );
+) => _APIDataResult<T>(
+  data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
+);
 
-Map<String, dynamic> _$$APIDataResultImplToJson<T>(
-  _$APIDataResultImpl<T> instance,
+Map<String, dynamic> _$APIDataResultToJson<T>(
+  _APIDataResult<T> instance,
   Object? Function(T value) toJsonT,
-) =>
-    <String, dynamic>{
-      'data': instance.data.map(toJsonT).toList(),
-    };
+) => <String, dynamic>{'data': instance.data.map(toJsonT).toList()};

@@ -4,7 +4,7 @@ part 'kpi_info.freezed.dart';
 part 'kpi_info.g.dart';
 
 @freezed
-class KpiInfo with _$KpiInfo {
+abstract class KpiInfo with _$KpiInfo {
   const factory KpiInfo({
     required int exchangesCount,
     required int accountsCount,
@@ -14,11 +14,11 @@ class KpiInfo with _$KpiInfo {
     required int errorsCount,
     required double commission,
     required double pnl,
-    required bool pnlUp,
+    bool? pnlUp,
     required double pnlInvestment,
-    required bool pnlInvestmentUp,
+    bool? pnlInvestmentUp,
     required double pnlTotal,
-    required bool pnlTotalUp,
+    bool? pnlTotalUp,
     required double roi,
     required double roiInvestment,
     required double roiTotal,

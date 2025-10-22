@@ -3,9 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:mobile_kit/mobile_kit.dart';
 
 class SettingsRepositoryImpl implements SettingsRepository {
-  SettingsRepositoryImpl({
-    required AuthLocalDataSourceImpl localDatasource,
-  })  : _localDataSource = localDatasource;
+  SettingsRepositoryImpl({required AuthLocalDataSourceImpl localDatasource}) : _localDataSource = localDatasource;
 
   final AuthLocalDataSourceImpl _localDataSource;
 
@@ -14,7 +12,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
     try {
       final userName = await _localDataSource.readUserName();
       final email = await _localDataSource.readUserEmail();
-      return Right(UserModel(uid: '', userName: userName, email: email));
+      final userRole = await _localDataSource.readUserRole();
+      return Right(UserModel(uid: '', userName: userName, email: email, userRole: UserRole.fromString(userRole)));
     } on StorageException {
       return Left(Failure.storage());
     } catch (error) {

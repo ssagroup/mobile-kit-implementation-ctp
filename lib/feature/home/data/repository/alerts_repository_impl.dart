@@ -13,10 +13,6 @@ class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository 
 
   final NotificationRemoteDatasourceImpl _remoteDatasource;
   final FirebaseNotificationsLocalDatasourceImpl _localDatasource;
-  final _notificationsSubject = BehaviorSubject<List<NotificationModel>>();
-
-  @override
-  Stream<List<NotificationModel>> get notificationStream => _notificationsSubject.stream;
 
   @override
   Stream<Unit> get pushMessageStream => _localDatasource.pushMessage;
@@ -27,21 +23,18 @@ class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository 
   Stream<bool> get isFetching => _remoteDatasource.isFetching;
 
   @override
-  Future<Either<Failure, List<NotificationModel>>> fetchNotifications() async {
-    _notificationsSubject.add([]);
+  Future<Either<Failure, PaginatedNotificationModel>> fetchNotifications({required int skipCount, required int limit}) async {
 
-    return await getGenericDataWithCaching<List<NotificationModel>>(remote: () async {
-      final notifications = await _remoteDatasource.getNotifications();
-      return notifications.map((e){
+    return await getGenericDataWithoutCaching<PaginatedNotificationModel>(remote: () async {
+      final response = await _remoteDatasource.getNotifications(skipCount: skipCount, limit: limit);
+      final notificationModels = response.items.map((e){
         return NotificationModel(
             createdDate: e.creationTime,
             title: e.title,
             value: e.text,
         );
       }).toList();
-    }, cacheLocal: (response) {
-      _notificationsSubject.add(response);
-      return Future.value();
+      return PaginatedNotificationModel(models: notificationModels, totalCount: response.totalCount);
     });
   }
 
@@ -54,11 +47,6 @@ class AlertsRepositoryImpl with BaseRepositoryMixin implements AlertsRepository 
         : () => _remoteDatasource.unregisterFCM(fcm!),
     );
     return result;
-  }
-
-  @override
-  void updateNotifications(List<NotificationModel> notifications) {
-    _notificationsSubject.add(notifications);
   }
 
   @override

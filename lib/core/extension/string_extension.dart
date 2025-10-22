@@ -1,3 +1,5 @@
+import 'package:mobile_kit/mobile_kit.dart';
+
 extension StringExtension on String {
   String get toApiValue {
     return switch (this) {
@@ -19,4 +21,12 @@ extension StringExtension on String {
       String() => null,
     };
   }
+
+  InfrastructureStatus create() => switch (this) {
+    'gray' => InfrastructureStatus.none,
+    'green' => InfrastructureStatus.normal,
+    'red' => InfrastructureStatus.error,
+    'yellow' => InfrastructureStatus.warning,
+    String() => throw 'Undefined type',
+  };
 }

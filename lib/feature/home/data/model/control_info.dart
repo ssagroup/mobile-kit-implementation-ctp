@@ -4,7 +4,7 @@ part 'control_info.freezed.dart';
 part 'control_info.g.dart';
 
 @freezed
-class ControlInfo with _$ControlInfo {
+abstract class ControlInfo with _$ControlInfo {
   const factory ControlInfo({
     required int id,
     required String name,
