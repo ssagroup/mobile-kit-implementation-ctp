@@ -32,7 +32,7 @@ abstract class KpiInfo with _$KpiInfo {
 abstract class BalanceInfo with _$BalanceInfo {
   const factory BalanceInfo({
     required String balanceTo,
-    required double total,
+    required int total,
     required double free,
     required double usedTotal,
     required double usedFree,

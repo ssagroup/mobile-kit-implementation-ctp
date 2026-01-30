@@ -48,7 +48,7 @@ Map<String, dynamic> _$KpiInfoToJson(_KpiInfo instance) => <String, dynamic>{
 
 _BalanceInfo _$BalanceInfoFromJson(Map<String, dynamic> json) => _BalanceInfo(
   balanceTo: json['balanceTo'] as String,
-  total: (json['total'] as num).toDouble(),
+  total: (json['total'] as num).toInt(),
   free: (json['free'] as num).toDouble(),
   usedTotal: (json['usedTotal'] as num).toDouble(),
   usedFree: (json['usedFree'] as num).toDouble(),

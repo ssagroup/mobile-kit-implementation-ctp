@@ -344,7 +344,7 @@ $BalanceInfoCopyWith<$Res> get balance {
 /// @nodoc
 mixin _$BalanceInfo {
 
- String get balanceTo; double get total; double get free; double get usedTotal; double get usedFree;
+ String get balanceTo; int get total; double get free; double get usedTotal; double get usedFree;
 /// Create a copy of BalanceInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -377,7 +377,7 @@ abstract mixin class $BalanceInfoCopyWith<$Res>  {
   factory $BalanceInfoCopyWith(BalanceInfo value, $Res Function(BalanceInfo) _then) = _$BalanceInfoCopyWithImpl;
 @useResult
 $Res call({
- String balanceTo, double total, double free, double usedTotal, double usedFree
+ String balanceTo, int total, double free, double usedTotal, double usedFree
 });
 
 
@@ -398,7 +398,7 @@ class _$BalanceInfoCopyWithImpl<$Res>
   return _then(_self.copyWith(
 balanceTo: null == balanceTo ? _self.balanceTo : balanceTo // ignore: cast_nullable_to_non_nullable
 as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
-as double,free: null == free ? _self.free : free // ignore: cast_nullable_to_non_nullable
+as int,free: null == free ? _self.free : free // ignore: cast_nullable_to_non_nullable
 as double,usedTotal: null == usedTotal ? _self.usedTotal : usedTotal // ignore: cast_nullable_to_non_nullable
 as double,usedFree: null == usedFree ? _self.usedFree : usedFree // ignore: cast_nullable_to_non_nullable
 as double,
@@ -486,7 +486,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String balanceTo,  double total,  double free,  double usedTotal,  double usedFree)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String balanceTo,  int total,  double free,  double usedTotal,  double usedFree)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BalanceInfo() when $default != null:
 return $default(_that.balanceTo,_that.total,_that.free,_that.usedTotal,_that.usedFree);case _:
@@ -507,7 +507,7 @@ return $default(_that.balanceTo,_that.total,_that.free,_that.usedTotal,_that.use
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String balanceTo,  double total,  double free,  double usedTotal,  double usedFree)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String balanceTo,  int total,  double free,  double usedTotal,  double usedFree)  $default,) {final _that = this;
 switch (_that) {
 case _BalanceInfo():
 return $default(_that.balanceTo,_that.total,_that.free,_that.usedTotal,_that.usedFree);case _:
@@ -527,7 +527,7 @@ return $default(_that.balanceTo,_that.total,_that.free,_that.usedTotal,_that.use
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String balanceTo,  double total,  double free,  double usedTotal,  double usedFree)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String balanceTo,  int total,  double free,  double usedTotal,  double usedFree)?  $default,) {final _that = this;
 switch (_that) {
 case _BalanceInfo() when $default != null:
 return $default(_that.balanceTo,_that.total,_that.free,_that.usedTotal,_that.usedFree);case _:
@@ -546,7 +546,7 @@ class _BalanceInfo implements BalanceInfo {
   factory _BalanceInfo.fromJson(Map<String, dynamic> json) => _$BalanceInfoFromJson(json);
 
 @override final  String balanceTo;
-@override final  double total;
+@override final  int total;
 @override final  double free;
 @override final  double usedTotal;
 @override final  double usedFree;
@@ -584,7 +584,7 @@ abstract mixin class _$BalanceInfoCopyWith<$Res> implements $BalanceInfoCopyWith
   factory _$BalanceInfoCopyWith(_BalanceInfo value, $Res Function(_BalanceInfo) _then) = __$BalanceInfoCopyWithImpl;
 @override @useResult
 $Res call({
- String balanceTo, double total, double free, double usedTotal, double usedFree
+ String balanceTo, int total, double free, double usedTotal, double usedFree
 });
 
 
@@ -605,7 +605,7 @@ class __$BalanceInfoCopyWithImpl<$Res>
   return _then(_BalanceInfo(
 balanceTo: null == balanceTo ? _self.balanceTo : balanceTo // ignore: cast_nullable_to_non_nullable
 as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
-as double,free: null == free ? _self.free : free // ignore: cast_nullable_to_non_nullable
+as int,free: null == free ? _self.free : free // ignore: cast_nullable_to_non_nullable
 as double,usedTotal: null == usedTotal ? _self.usedTotal : usedTotal // ignore: cast_nullable_to_non_nullable
 as double,usedFree: null == usedFree ? _self.usedFree : usedFree // ignore: cast_nullable_to_non_nullable
 as double,
