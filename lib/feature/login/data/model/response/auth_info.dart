@@ -66,14 +66,3 @@ abstract class TokenResponseUser with _$TokenResponseUser {
     );
   }
 }
-
-// enum UserRole {
-//   trader,
-//   admin,
-//   unknown;
-//
-//
-//
-//   /// Получение строки обратно (если нужно сохранить в БД, например)
-//   String get name => toString().split('.').last;
-// }

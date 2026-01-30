@@ -22,8 +22,21 @@ abstract class KpiInfo with _$KpiInfo {
     required double roi,
     required double roiInvestment,
     required double roiTotal,
+    required BalanceInfo balance,
   }) = _KpiInfo;
 
   factory KpiInfo.fromJson(Map<String, dynamic> json) => _$KpiInfoFromJson(json);
 }
 
+@freezed
+abstract class BalanceInfo with _$BalanceInfo {
+  const factory BalanceInfo({
+    required String balanceTo,
+    required double total,
+    required double free,
+    required double usedTotal,
+    required double usedFree,
+  }) = _BalanceInfo;
+
+  factory BalanceInfo.fromJson(Map<String, dynamic> json) => _$BalanceInfoFromJson(json);
+}

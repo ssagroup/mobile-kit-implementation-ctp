@@ -29,6 +29,7 @@ class KpiRepositoryImpl with BaseRepositoryMixin implements KpiRepository {
         KpiModel(title: 'ROI trading', value: kpi.roi.toString(), order: 10, unit: '%'),
         KpiModel(title: 'ROI investment', value: kpi.roiInvestment.toString(), order: 11),
         KpiModel(title: 'ROI total', value: kpi.roiTotal.toString(), order: 12, unit: '%'),
+        KpiModel(title: 'Balance (${kpi.balance.balanceTo})', value: kpi.balance.total.toString(), order: 13),
       ];
       return models;
     });

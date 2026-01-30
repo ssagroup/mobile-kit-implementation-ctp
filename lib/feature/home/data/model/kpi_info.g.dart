@@ -23,6 +23,7 @@ _KpiInfo _$KpiInfoFromJson(Map<String, dynamic> json) => _KpiInfo(
   roi: (json['roi'] as num).toDouble(),
   roiInvestment: (json['roiInvestment'] as num).toDouble(),
   roiTotal: (json['roiTotal'] as num).toDouble(),
+  balance: BalanceInfo.fromJson(json['balance'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$KpiInfoToJson(_KpiInfo instance) => <String, dynamic>{
@@ -42,4 +43,22 @@ Map<String, dynamic> _$KpiInfoToJson(_KpiInfo instance) => <String, dynamic>{
   'roi': instance.roi,
   'roiInvestment': instance.roiInvestment,
   'roiTotal': instance.roiTotal,
+  'balance': instance.balance,
 };
+
+_BalanceInfo _$BalanceInfoFromJson(Map<String, dynamic> json) => _BalanceInfo(
+  balanceTo: json['balanceTo'] as String,
+  total: (json['total'] as num).toDouble(),
+  free: (json['free'] as num).toDouble(),
+  usedTotal: (json['usedTotal'] as num).toDouble(),
+  usedFree: (json['usedFree'] as num).toDouble(),
+);
+
+Map<String, dynamic> _$BalanceInfoToJson(_BalanceInfo instance) =>
+    <String, dynamic>{
+      'balanceTo': instance.balanceTo,
+      'total': instance.total,
+      'free': instance.free,
+      'usedTotal': instance.usedTotal,
+      'usedFree': instance.usedFree,
+    };
