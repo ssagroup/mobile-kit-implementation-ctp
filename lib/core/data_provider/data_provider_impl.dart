@@ -34,12 +34,14 @@ class DataProviderImpl extends DataProvider {
     final storage = HiveStorage(box);
     final String baseUrl = isProd ? prodBaseUrl : stageBaseUrl;
 
-    final dio = Dio(BaseOptions(
-      baseUrl: baseUrl,
-      contentType: 'application/json',
-      receiveTimeout: const Duration(seconds: 720),
-      connectTimeout: const Duration(seconds: 720),
-    ));
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: baseUrl,
+        contentType: 'application/json',
+        receiveTimeout: const Duration(seconds: 720),
+        connectTimeout: const Duration(seconds: 720),
+      ),
+    );
     if (kDebugMode) {
       dio.interceptors.add(PrettyDioLogger(requestBody: true, requestHeader: false, responseBody: true));
     }
@@ -61,54 +63,47 @@ class DataProviderImpl extends DataProvider {
       remoteDataSource: AuthRemoteDataSourceImpl(client: client),
     );
 
-    final controlRemoteDataSource = ControlRemoteDatasourceImpl(
-      authentication: authRep,
-      client: client,
-    );
+    final controlRemoteDataSource = ControlRemoteDatasourceImpl(authentication: authRep, client: client);
     controlRepository = ControlRepositoryImpl(remoteDataSource: controlRemoteDataSource);
 
     final notificationsLocalDataSource = FirebaseNotificationsLocalDatasourceImpl();
-    final notificationRemoteDataSource = NotificationRemoteDatasourceImpl(
-      client: client,
-      authentication: authRep,
-    );
+    final notificationRemoteDataSource = NotificationRemoteDatasourceImpl(client: client, authentication: authRep);
     alertsRepository = AlertsRepositoryImpl(
-        localDatasource: notificationsLocalDataSource, remoteDatasource: notificationRemoteDataSource);
-
-    final kpiRemoteDataSource = KpiRemoteDatasourceImpl(
-      authentication: authRep,
-      client: client,
+      localDatasource: notificationsLocalDataSource,
+      remoteDatasource: notificationRemoteDataSource,
     );
+
+    final kpiRemoteDataSource = KpiRemoteDatasourceImpl(authentication: authRep, client: client);
     kpisRepository = KpiRepositoryImpl(remoteDatasource: kpiRemoteDataSource);
 
-    final kpiChartRemoteDataSource = KpiChartRemoteDatasourceImpl(
-      authentication: authRep,
-      client: client,
-    );
-    final infraChartRemoteDataSource = InfrastructureChartRemoteDatasourceImpl(
-      authentication: authRep,
-      client: client,
-    );
+    final kpiChartRemoteDataSource = KpiChartRemoteDatasourceImpl(authentication: authRep, client: client);
+    final infraChartRemoteDataSource = InfrastructureChartRemoteDatasourceImpl(authentication: authRep, client: client);
     final infraChartLocalDataSource = InfrastructureChartLocalDatasourceImpl();
     final infraLocalDataSource = InfrastructureLocalDatasourceImpl();
     chartRepository = ChartRepositoryImpl(
-        kpiChartRemoteDatasource: kpiChartRemoteDataSource,
-        infrastructureChartLocalDatasource: infraChartLocalDataSource);
-
-    final infrastructureRemoteDataSource = InfrastructureRemoteDatasourceImpl(
-      authentication: authRep,
-      client: client,
+      kpiChartRemoteDatasource: kpiChartRemoteDataSource,
+      infrastructureChartLocalDatasource: infraChartLocalDataSource,
     );
+
+    final infrastructureRemoteDataSource = InfrastructureRemoteDatasourceImpl(authentication: authRep, client: client);
     infrastructureRepository = InfrastructureRepositoryImpl(
-        remoteDatasource: infrastructureRemoteDataSource,
-        chartRemoteDatasource: infraChartRemoteDataSource,
-        chartLocalDatasource: infraChartLocalDataSource,
+      remoteDatasource: infrastructureRemoteDataSource,
+      chartRemoteDatasource: infraChartRemoteDataSource,
+      chartLocalDatasource: infraChartLocalDataSource,
       infrastructureLocalDatasource: infraLocalDataSource,
     );
 
     settingsRepository = SettingsRepositoryImpl(localDatasource: authLocalDataSource);
 
     appLogoProvider = AppLogoProviderImpl();
+
+    infrastructureRemoteDataSource.logoutHandler = () => authRep.logout();
+    kpiRemoteDataSource.logoutHandler = () => authRep.logout();
+    kpiChartRemoteDataSource.logoutHandler = () => authRep.logout();
+    notificationRemoteDataSource.logoutHandler = () => authRep.logout();
+    controlRemoteDataSource.logoutHandler = () => authRep.logout();
+    infraChartRemoteDataSource.logoutHandler = () => authRep.logout();
+
   }
 
   static Future<DataProviderImpl> create() async {
@@ -117,9 +112,7 @@ class DataProviderImpl extends DataProvider {
     return await DataProviderImpl._initialize(storagePath: storagePath);
   }
 
-  static Future<DataProviderImpl> _initialize({
-    required String storagePath,
-  }) async {
+  static Future<DataProviderImpl> _initialize({required String storagePath}) async {
     Hive.init(storagePath);
     final Box<String> box = await Hive.openBox<String>('');
     return DataProviderImpl._(box);

@@ -15,7 +15,7 @@ android {
     namespace = "com.ssa.ctp"
     compileSdk = flutter.compileSdkVersion
 //    ndkVersion = "28.0.12916984"
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -29,8 +29,8 @@ android {
     defaultConfig {
         applicationId = "com.ssa.ctp"
         minSdkVersion 24
-        targetSdkVersion 35
-        compileSdkVersion 35
+        targetSdkVersion 36
+        compileSdkVersion 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
